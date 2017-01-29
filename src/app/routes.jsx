@@ -4,6 +4,9 @@ import App from './components/app';
 import Home from './containers/home';
 import About from './components/About';
 
+const store = createStore(reducers, composeEnhancers(applyMiddleware(ReduxPromise)))
+
+
 // import HomeIndex from './components/index_home';
 // import UserLogin from './components/user/login';
 // import UserLogout from './components/user/logout';
@@ -25,7 +28,7 @@ import About from './components/About';
 // );
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={Home} />
+    <IndexRoute component={Home} onEnter={() => store.dispatch( {type: TAB_INDEX, payload: 0} )} />
     <Route path="about" component={About}/>
   </Route>
 );
