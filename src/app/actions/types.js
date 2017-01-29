@@ -12,3 +12,6 @@ export const LOGOUT_FIREBASE_USER = 'LOGOUT_FIREBASE_USER';
 
 
 export const TAB_INDEX = 'tab_index';
+
+export const AUTH_USER = 'auth_user'
+export const UNAUTH_USER = 'unauth_user';

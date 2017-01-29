@@ -11,15 +11,14 @@ class Navbar extends Component {
   }
 
   renderTabs(){
-    const { userName, authenticated } = this.props;
+    const { authenticated } = this.props;
     if(authenticated){
       return [
         <Tab label='Signoff' value={4} key={2} onClick={() => this.onSignOffClick()}/>
       ]
     } else{
       return [
-        <Tab label='Login' value={2} key={0} containerElement={<Link to="/login" />}/>,
-        <Tab label='Signup' value={3} key={1} containerElement={<Link to="/signup" />}/>
+        <Tab label='Login' value={2} key={0} containerElement={<Link to="/login" />}/>
       ]
     }
   }
@@ -48,7 +47,7 @@ class Navbar extends Component {
           <Tabs style={styles.tabs} value={tabIndex} initialSelectedIndex={tabIndex}>
             <Tab label='Home' value={0} containerElement={<Link to="/" />} />
             <Tab label='About' value={1} containerElement={<Link to="/about" />} />
-            {/* renderTabs() */}
+            {this.renderTabs()}
           </Tabs>
         </AppBar>
       </div>
@@ -58,7 +57,8 @@ class Navbar extends Component {
 
 function mapStateToProps(state){
   return {
-    tabIndex: state.tabIndex.tab_index
+    tabIndex: state.tabIndex.tab_index,
+    authenticated: state.auth.authenticated
   }
 }
 
